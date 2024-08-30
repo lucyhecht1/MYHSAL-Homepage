@@ -1,0 +1,56 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+    <h2 class="search-heading">Search Results for "{{ query }}"</h2>
+    {% if num_results > 0 %}
+        <p class="result-count">Found {{ num_results }} results</p>
+        <div class="search-results">
+            {% for result in search_results %}
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{{ url_for('view_team', team_id=result['id']) }}">
+                                {% for word in result["team-name"].split() %}
+                                    {% if query.lower() in word.lower() %}
+                                        <span class="highlight">{{ word }}</span>
+                                    {% else %}
+                                        {{ word }}
+                                    {% endif %}
+                                {% endfor %}
+                            </a>
+                        </h5>
+                        <p class="card-text">Current record: {{ result["record"] }}</p>
+                        <p class="card-text">
+                            {% for player in result["roster"] %}
+                                {% if query.lower() in player.lower() %}
+                                    {% for name_part in player.split() %}
+                                        {% if query.lower() in name_part.lower() %}
+                                            <span class="highlight">{{ name_part }}</span>
+                                        {% else %}
+                                            {{ name_part }}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            {% endfor %}
+                        </p>
+                        {% if query.lower() in result["home-gym"].lower() %}
+                            <p class="card-text">
+                                Home gym: 
+                                {% for gym_part in result["home-gym"].split() %}
+                                    {% if query.lower() in gym_part.lower() %}
+                                        <span class="highlight">{{ gym_part }}</span>
+                                    {% else %}
+                                        {{ gym_part }}
+                                    {% endif %}
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-results">No results found.</p>
+    {% endif %}
+</div>
+{% endblock %}

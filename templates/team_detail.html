@@ -1,0 +1,68 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+    <div class="card shadow">
+        <div class="card-body">
+            <h1 class="card-title text-center mb-4 header">
+                {{ team["team-name"] }}
+            </h1>
+            {% if team["logo"] %}
+            <div class="row">
+                <!-- First Column -->
+                <div class="col-md-5 text-center">
+                    <img src="{{team['logo']}}" alt="{{ team['team-name'] }} Logo" class="team-logo img-fluid">
+                        <p><strong>Home Gym:</strong> {{ team["home-gym"] }}</p>
+                        <div class="record">
+                            <strong>Record:</strong> {{ team["record"] }}
+                        </div>
+                        <div class="yellow-box">
+                        <strong>Roster:</strong>
+                        <ul class="roster-list list-unstyled">
+                            {% for player in team["roster"] %}
+                                <li>{{ player }}</li>
+                            {% endfor %}
+                        </ul>
+                        <strong>Active Players:</strong> {{ team["active-players"] }}
+                    </div>
+                </div>
+
+                <!-- Second Column -->
+                <div class="col-md-5 text-center">
+                    <div class="upcoming-games">
+                        <strong>Upcoming Games:</strong><br>
+                    </div>
+                    <ul class="roster-list list-unstyled">
+                        {% for g in team["upcoming-games"] %}
+                            <li>{{ g }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <div class="past-games">
+                        <strong>Past 10 Games:</strong><br>
+                    </div>
+                        <ul class="games-list list-unstyled">
+                            {% for game in team["past-games"] %}
+                                <li>{{ game.date }} {{ game.location }} 
+                                    <a href="#" class="team-link" data-team-id="{{ dict_teams [game.opponent] }}">{{ game.opponent }}</a> | {{ game.result }}
+                                </li>
+                            {% endfor %}
+                        </ul>                    
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="row">
+                <div class="col-10">
+                    <div class="mission-statement text-center">
+                        <strong>Larger than Sports: Learn more about the {{ team["team-name"] }}</strong><br> 
+                        <p>{{ team["mission-statement"] }}</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <a href="{{ url_for('edit_team', id=team['id']) }}" class="btn btn-primary">Edit Page</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

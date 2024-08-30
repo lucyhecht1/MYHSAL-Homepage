@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MYHSAL Website</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+    
+    <!-- Main Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container-fluid">
+            <div class="col-md-3">
+                <a class="navbar-brand" href="/">
+                    <img src="{{ url_for('static', filename='images/logos/myhsal.png') }}" alt="myhsal" height="100" class="d-inline-block myhsal-logo">
+                    MYHSAL Homepage
+                </a>
+            </div>
+            <div class="col-md-5">
+                <form id="searchForm" class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" id="searchInput" autocomplete="off">
+                    <button id="searchButton" class="btn btn-primary" type="submit">Search</button>
+                    <a href="/add" class="btn btn-primary navbar-btns text-small">Add Team</a>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+    {% endblock %}
+    <script src="{{ url_for('static', filename='homepage.js') }}"></script>
+    <script src="{{ url_for('static', filename='add_team.js') }}"></script>
+    <script src="{{ url_for('static', filename='team_links.js') }}"></script>
+    <script src="{{ url_for('static', filename='edit_team.js') }}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+    
+</body>
+</html>

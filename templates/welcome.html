@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block content %}
+<div class="container">
+    <h1>MYHSAL</h1><br><br>
+    <div class="row"> 
+        <div class="col-md-5 myhsal-logo-2">
+            <img src="static/images/logos/team-pic.png" alt="homepage-image" class="img-fluid">
+            <h3>SAR Sting: Reigning MYHSAL Champions</h3>
+        </div>
+        <div class="col-md-6">
+            <p>
+                Welcome to the official website for the <strong>Metropolitan Yeshiva High School Athletic League</strong> (MYHSAL)!
+                <br><br>
+                On this site, you can search for <strong>team names, player names, and gym locations</strong>.
+                <br><br>
+                <strong>Who benefits from our extensive database?</strong> Imagine away teams and fans effortlessly locating the address of their competitors
+                when gearing up for an upcoming game. Coaches and scouts, on the other hand, find a goldmine of data to analyze team performances
+                against others, aiding in strategic planning and game preparation. Concerned parents can also use our platform to learn more about
+                unfamiliar schools, ensuring their children are in good hands.
+                <br><br>
+                Whether you're a player, coach, or fan, this functionality empowers you to stay on top of upcoming matchups and assess the competition
+                effectively.
+                <br><br>
+                Join us in elevating your Yeshiva League High School basketball experience – <strong>where information meets excitement on the court!</strong>
+            </p>
+        </div>
+        <div class="stuff">
+            <h2>Featured Teams</h2>
+        </div>
+        {% for team in featured_teams %}
+        <div class="col-md-3 text-center">
+                <div class="team">
+                    <h3>{{ team["team-name"] }}</h3>
+                    <a href="{{ url_for('view_team', team_id=team['id']) }}">
+                        <img src="{{ team['logo'] }}" alt="{{ team['team-name'] }} logo" class="img-fluid mb-3">
+                    </a>
+                    <h3>Record: {{ team["record"] }}</h3>
+                    <div>
+                        <a href="{{ url_for('view_team', team_id=team['id']) }}" class="btn btn-primary">Learn more</a>
+                    </div>
+                </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

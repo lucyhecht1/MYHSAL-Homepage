@@ -1,0 +1,174 @@
+{% extends 'layout.html' %}
+{% block content %}
+<body>
+    <div id="success-message" style="color: green;"></div>
+    <div id="error-message" style="color: red;"></div>
+
+    <h1 class="text-center">Add New Team</h1> 
+    <form id="addTeamForm" method="POST">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="team_name">Team Name:</label> 
+                    <input type="text" class="form-input" id="team_name" name="team_name">  
+                </div>
+                <div class="form-group">
+                    <label for="logo">Logo:</label> 
+                    <input type="text" class="form-input" id="logo" name="logo">  
+                </div>
+                <div class="form-group">
+                    <label for="active_players">Number of Active Players:</label>
+                    <input type="number" class="form-input" id="active_players" name="active_players">  
+                </div>
+                <div class="form-group">
+                    <label for="mission_statement">Mission Statement:</label>
+                    <textarea class="form-input" id="mission_statement" name="mission_statement"></textarea>  
+                </div>
+                <div class="form-group">
+                    <label for="roster">Roster (separate by comma):</label>
+                    <p>Suggested Syntax: FNAME LNAME | # </p>
+                    <input type="text" id="roster" class="form-input" name="roster">  
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="home_gym">Home Gym Address:</label> 
+                    <input type="text" id="home_gym" class="form-input" name="home_gym">  
+                </div>
+                <div class="form-group">
+                    <label for="record">Record:</label> 
+                    <input type="text" id="record" class="form-input" name="record">  
+                </div>
+
+                <div class="form-group">
+                    <label for="upcoming_games">Upcoming Games (separate by comma):</label> 
+                    <input type="text" id="upcoming_games" class="form-input" name="upcoming_games">  
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-11">
+                <label for="home-gym"><strong>Past 10 Games:</label></strong>
+                <p>Follow syntax carefully for a clean effect: <br>
+                <font color="#000">date:</font> Tuesday February 27, 2024 <br> 
+                <font color="#000">opponent:</font> SAR Sting <br>
+                <font color="#000">location:</font> choose either VS. or @ <br>
+                <font color="#000">result:</font> Win: 48-46<br><br>
+            </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">
+                <label for="date1">Date1:</label>
+                <input type="text" id="date1" class="form-input" name="date1">
+                <label for="opponent1">Opponent1:</label>
+                <input type="text" id="opponent1" class="form-input" name="opponent1">
+                <label for="location1">Location1:</label>
+                <input type="text" id="location1" class="form-input" name="location1">
+                <label for="resul1t">Result1:</label>
+                <input type="text" id="result1" class="form-input" name="result1">
+            </div>
+            <div class="col-md-2">
+                <label for="date2">Date2:</label>
+                <input type="text" id="date2" class="form-input allow-empty" name="date2">
+                <label for="opponent2">Opponent2:</label>
+                <input type="text" id="opponent2" class="form-input allow-empty" name="opponent2">
+                <label for="location">Location2:</label>
+                <input type="text" id="location2" class="form-input allow-empty" name="location2">
+                <label for="result">Result2:</label>
+                <input type="text" id="result2" class="form-input allow-empty" name="result2">
+            </div>
+            <div class="col-md-2">
+                <label for="date3">Date3:</label>
+                <input type="text" id="date3" class="form-input allow-empty" name="date3">
+                <label for="opponent3">Opponent3:</label>
+                <input type="text" id="opponent3" class="form-input allow-empty" name="opponent3">
+                <label for="location3">Location3:</label>
+                <input type="text" id="location3" class="form-input allow-empty" name="location3">
+                <label for="result3">Result3:</label>
+                <input type="text" id="result3" class="form-input allow-empty" name="result3">
+            </div>
+            <div class="col-md-2">
+                <label for="date4">Date4:</label>
+                <input type="text" id="date4" class="form-input allow-empty" name="date4">
+                <label for="opponent4">Opponent4:</label>
+                <input type="text" id="opponent4" class="form-input allow-empty" name="opponent4">
+                <label for="location4">Location4:</label>
+                <input type="text" id="location4" class="form-input allow-empty" name="location4">
+                <label for="result4">Result4:</label>
+                <input type="text" id="result4" class="form-input allow-empty" name="result4">
+            </div>
+            <div class="col-md-2">
+                <label for="date5">Date5:</label>
+                <input type="text" id="date5" class="form-input allow-empty" name="date5">
+                <label for="opponent5">Opponent5:</label>
+                <input type="text" id="opponent5" class="form-input allow-empty" name="opponent5">
+                <label for="location5">Location5:</label>
+                <input type="text" id="location5" class="form-input allow-empty" name="location5">
+                <label for="result5">Result5:</label>
+                <input type="text" id="result5" class="form-input allow-empty" name="result5">
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="date6">Date6:</label>
+                <input type="text" id="date6" class="form-input allow-empty" name="date6">
+                <label for="opponent6">Opponent6:</label>
+                <input type="text" id="opponent6" class="form-input allow-empty" name="opponent6">
+                <label for="location6">Location6:</label>
+                <input type="text" id="location6" class="form-input allow-empty" name="location6">
+                <label for="result6">Result6:</label>
+                <input type="text" id="result6" class="form-input allow-empty" name="result6">
+            </div>
+            <div class="col-md-2">
+                <label for="date7">Date7</label>
+                <input type="text" id="date7" class="form-input allow-empty" name="date7">
+                <label for="opponent7">Opponent7:</label>
+                <input type="text" id="opponent7" class="form-input allow-empty" name="opponent7">
+                <label for="location7">Location7:</label>
+                <input type="text" id="location7" class="form-input allow-empty" name="location7">
+                <label for="result7">Result7:</label>
+                <input type="text" id="result7" class="form-input allow-empty" name="result7">
+            </div>
+            <div class="col-md-2">
+                <label for="date8">Date8:</label>
+                <input type="text" id="date8" class="form-input allow-empty" name="date8">
+                <label for="opponent8">Opponent8:</label>
+                <input type="text" id="opponent8" class="form-input allow-empty" name="opponent8">
+                <label for="location8">Location8:</label>
+                <input type="text" id="location8" class="form-input allow-empty" name="location8">
+                <label for="result8">Result8:</label>
+                <input type="text" id="result8" class="form-input allow-empty" name="result8">
+            </div>
+            <div class="col-md-2">
+                <label for="date9">Date9:</label>
+                <input type="text" id="date9" class="form-input allow-empty" name="date9">
+                <label for="opponent9">Opponent9:</label>
+                <input type="text" id="opponent9" class="form-input allow-empty" name="opponent9">
+                <label for="location9">Location9:</label>
+                <input type="text" id="location9" class="form-input allow-empty" name="location9">
+                <label for="result9">Result9:</label>
+                <input type="text" id="result9" class="form-input allow-empty" name="result9">
+            </div>
+            <div class="col-md-2">
+                <label for="date10">Date10:</label>
+                <input type="text" id="date10" class="form-input allow-empty" name="date10">
+                <label for="opponent10">Opponent10:</label>
+                <input type="text" id="opponent10" class="form-input allow-empty" name="opponent10">
+                <label for="location10">Location10:</label>
+                <input type="text" id="location10" class="form-input allow-empty" name="location10">
+                <label for="result10">Result10:</label>
+                <input type="text" id="result10" class="form-input allow-empty" name="result10">
+            </div>
+
+            <div class="btn success form-group">
+                <button type="submit" class="btn btn-primary" id="edit-submit">Submit</button>
+
+            </div>
+        </div>  
+    </form>
+</body>
+{% endblock %}

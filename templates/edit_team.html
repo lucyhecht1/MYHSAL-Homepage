@@ -1,0 +1,182 @@
+{% extends 'layout.html' %}
+{% block content %}
+<body>
+    <div id="success-message" style="color: green;"></div>
+    <div id="error-message" style="color: red;"></div>
+
+        <h1 class="text-center">Edit Team</h1><br>
+        <form id="editTeamForm" method="POST" class="row">
+            <div class="col-md-5">
+                <div class="form-group">
+                    <label for="team-name">Team Name:</label>
+                    <input type="text" id="team-name" name="team-name" class="form-control" value="{{team['team-name']}}">
+                </div>
+                <div class="form-group">
+                    <label for="logo">Logo:</label>
+                    <input type="text" id="logo" name="logo" class="form-control" value="{{team['logo']}}">
+                </div>
+                <div class="form-group">
+                    <label for="active-players">Number of Active Players:</label>
+                    <input type="number" id="active-players" name="active-players" class="form-control" value="{{team['active-players']}}">
+                </div>
+                <div class="form-group">
+                    <label for="mission-statement">Mission Statement:</label>
+                    <textarea id="mission-statement" name="mission-statement" class="form-control">{{team['mission-statement']}}</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="roster">Roster (comma separated):</label>
+                    <input type="text" id="roster" name="roster" class="form-control" value="{% for p in team['roster'] %}{{p}},{% endfor %}">
+                </div>
+            </div>
+            <div class="col-md-5">
+
+                <div class="form-group">
+                    <label for="upcoming-games">Upcoming Games (comma separated):</label>
+                    <input type="text" id="upcoming-games" name="upcoming-games" class="form-control" value="{% for g in team['upcoming-games'] %}{{g}},{% endfor %}">
+                </div>
+
+                <div class="form-group">
+                    <label for="home-gym">Home Gym Address:</label>
+                    <input type="text" id="home-gym" name="home-gym" class="form-control" value="{{team['home-gym']}}">
+                </div>
+                <div class="form-group">
+                    <label for="record">Record:</label>
+                    <input type="text" id="record" name="record" class="form-control" value="{{team['record']}}">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-11">
+                    <label for="home-gym"><strong>Past 10 Games:</label></strong>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date 1:</label>
+                        <input type="text" id="date1" class="form-input" name="date1" value="{{team['past-games'][0]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent1" class="form-input" name="opponent1" value="{{team['past-games'][0]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location1" class="form-input" name="location1" value="{{team['past-games'][0]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result1" class="form-input" name="result1" value="{{team['past-games'][0]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date2:</label>
+                        <input type="text" id="date2" class="form-input" name="date2" value="{{team['past-games'][1]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent2" class="form-input" name="opponent2" value="{{team['past-games'][1]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location2" class="form-input" name="location2" value="{{team['past-games'][1]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result2" class="form-input" name="result2" value="{{team['past-games'][1]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date3:</label>
+                        <input type="text" id="date3" class="form-input" name="date3" value="{{team['past-games'][2]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent3" class="form-input" name="opponent3" value="{{team['past-games'][2]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location3" class="form-input" name="location3" value="{{team['past-games'][2]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result3" class="form-input" name="result3" value="{{team['past-games'][2]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date4:</label>
+                        <input type="text" id="date4" class="form-input" name="date4" value="{{team['past-games'][3]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent4" class="form-input" name="opponent4" value="{{team['past-games'][3]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location4" class="form-input" name="location4" value="{{team['past-games'][3]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result4" class="form-input" name="result4" value="{{team['past-games'][3]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date5:</label>
+                        <input type="text" id="date5" class="form-input" name="date5" value="{{team['past-games'][4]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent5" class="form-input" name="opponent5" value="{{team['past-games'][4]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location5" class="form-input" name="location5" value="{{team['past-games'][4]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result5" class="form-input" name="result5" value="{{team['past-games'][4]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date6:</label>
+                        <input type="text" id="date6" class="form-input" name="date6" value="{{team['past-games'][5]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent6" class="form-input" name="opponent6" value="{{team['past-games'][5]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location6" class="form-input" name="location6" value="{{team['past-games'][5]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result6" class="form-input" name="result6" value="{{team['past-games'][5]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date7:</label>
+                        <input type="text" id="date7" class="form-input" name="date7" value="{{team['past-games'][6]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent7" class="form-input" name="opponent7" value="{{team['past-games'][6]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location7" class="form-input" name="location7" value="{{team['past-games'][6]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result7" class="form-input" name="result7" value="{{team['past-games'][6]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date8">Date:</label>
+                        <input type="text" id="date8" class="form-input" name="date8" value="{{team['past-games'][7]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent8" class="form-input" name="opponent8" value="{{team['past-games'][7]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location8" class="form-input" name="location8" value="{{team['past-games'][7]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result8" class="form-input" name="result8" value="{{team['past-games'][7]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date9:</label>
+                        <input type="text" id="date9" class="form-input" name="date9" value="{{team['past-games'][8]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent9" class="form-input" name="opponent9" value="{{team['past-games'][8]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location9" class="form-input" name="location9" value="{{team['past-games'][8]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result9" class="form-input" name="result9" value="{{team['past-games'][8]['result']}}">
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        <label for="date">Date10:</label>
+                        <input type="text" id="date10" class="form-input" name="date10" value="{{team['past-games'][9]['date']}}">
+                        <label for="opponent">Opponent:</label>
+                        <input type="text" id="opponent10" class="form-input" name="opponent10" value="{{team['past-games'][9]['opponent']}}">
+                        <label for="location">Location:</label>
+                        <input type="text" id="location10" class="form-input" name="location10" value="{{team['past-games'][9]['location']}}">
+                        <label for="result">Result:</label>
+                        <input type="text" id="result10" class="form-input" name="result10" value="{{team['past-games'][9]['result']}}">
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-primary" data-team-id="{{team.id}}" id="edit-submit">Submit</button>
+                <button type="button" class="btn btn-secondary" id="discardChanges">Discard Changes</button>
+            </div>
+        </form>
+    </div>
+</body>
+{% endblock %}
