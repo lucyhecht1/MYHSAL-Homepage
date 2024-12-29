@@ -1,5 +1,5 @@
 # MYHSAL (Metropolitan Yeshiva High School Athletic League)
-As a high school athlete, I loved following my league's website and regularly checked for updated scores and stats. However, the webste's design was a hot mess and navigating it was a notorious experience. My friends and I always thought it deserved better, and this project gave me the chance to finally make that happen.
+As a high school athlete, I loved following my league's website and regularly visited it for updated scores and stats. However, the webste's design was a hot mess and navigating it was a notorious experience. My friends and I always thought it deserved better, and this project gave me the chance to finally make that happen.
 MYHSAL is a dynamic web application designed to serve as the homepage for the Metropolitan Yeshiva High School Athletic League. It allows users to explore teams, add and edit team data, and search for teams based on specific criteria. The project is built using Flask and incorporates both front-end and back-end functionality to provide a seamless user experience.
 
 ---
